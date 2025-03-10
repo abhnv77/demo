@@ -1,10 +1,11 @@
 class radioButton{
     constructor(){
-        this.radioButton = $(`//span[text()='Radio Button']`)
+        this.radioButtonwidget = $(`//span[text()='Radio Button']`)
     }
 
     async clickRadioButton(){
-        
+        await radioButtonwidget().click()
+            
     }
 
     

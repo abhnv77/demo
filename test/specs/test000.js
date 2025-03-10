@@ -73,5 +73,28 @@ describe('Demo QA application', function () {
         await $(`//div[@class="text-right col-md-2 col-sm-12"]/button[@id="submit"]`).click()
         await $(`//div[text()="First Name"]`).click()
     })
-    it('')
+    it('check and verify the radio buttons',async ()=>{
+        const radioButton =  $('//span[text()="Radio Button"]')
+        await radioButton.click()
+        const yesLabel =$('//label[@for="yesRadio"]')
+        const yesButton =$('//input[@id="yesRadio"]"]')
+        await yesButton.scrollIntoView({block:'center'})
+        const impressiveLabel = $('//label[@for="impressiveRadio"]')
+        const impressiveButton = $('//input[@id="impressiveRadio"]')
+        // await $('//div[@class="mb-3"]').waitForDisplayed({timeout:3000})
+
+        async function verifyYes(option){
+            if(option.toLowerCase()==='yes'){
+                await yesLabel.click()
+                await expect(yesButton).toBeSelected()
+            }
+            else if(option.toLowerCase()==='impressive'){
+                await impressiveLabel.click()
+                await expect(impressiveButton).toBeSelected()
+            }
+        }
+
+        await verifyYes('yes')
+        await verifyYes('impressive')
+    })
 })
